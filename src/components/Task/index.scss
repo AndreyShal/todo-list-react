@@ -1,0 +1,10 @@
+.task {
+  display: flex;
+  list-style: none;
+}
+
+.task--done {
+  .task__input {
+    text-decoration: line-through;
+  }
+}
