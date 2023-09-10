@@ -13,17 +13,17 @@ const Tasks = () => {
   }, [data]);
 
   return (
-    <div>
+    <div className="tasks">
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
         <>Loading...</>
       ) : data ? (
-        <div>
+        <ul className="tasks__list">
           {data?.map((el: Post) => (
             <Task key={el.id} task={el.task} done={el.done} id={el.id} />
           ))}
-        </div>
+        </ul>
       ) : null}
     </div>
   );

@@ -1,6 +1,18 @@
 .task {
   display: flex;
+  gap: 1vh;
   list-style: none;
+  padding: 2vh;
+  border: 0.3vh solid black;
+  border-radius: 3vh;
+
+  @media (max-width: 1199px) {
+    border: 0.15vh solid black;
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 }
 
 .task--done {

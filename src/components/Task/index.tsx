@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDeleteTodoMutation, useUpdateTodoMutation } from "../../store/api/todo.api";
+import { Button, Textarea } from "@chakra-ui/react";
 import "./index.scss";
 import clsx from "clsx";
 
@@ -11,17 +12,21 @@ export interface Post {
 
 const Task: React.FC<Post> = ({ id, task, done }) => {
   const [value, setValue] = useState(task);
-  const [updateTodo] = useUpdateTodoMutation();
-  const [deleteTodo] = useDeleteTodoMutation();
+  const [updateTodo, { isLoading: isUpdating }] = useUpdateTodoMutation();
+  const [deleteTodo, { isLoading: isDeleting }] = useDeleteTodoMutation();
 
   return (
     <li className={clsx("task", done && "task--done")}>
-      <label>
-        <input className="task__input" type="text" value={value} onChange={(e) => setValue(e.target.value)} />
-        <button onClick={async () => await updateTodo({ id, task, done: !done })}>Done</button>
-        <button onClick={async () => await deleteTodo(id)}>Delete</button>
-        <button onClick={async () => await updateTodo({ id, task: value, done })}>Save</button>
-      </label>
+      <Textarea className="task__input" value={value} onChange={(e) => setValue(e.target.value)} />
+      <Button onClick={async () => await updateTodo({ id, task, done: !done })} isLoading={isUpdating} colorScheme="teal" size="xs">
+        Done
+      </Button>
+      <Button onClick={async () => await deleteTodo(id)} colorScheme="red" size="xs">
+        Delete
+      </Button>
+      <Button onClick={async () => await updateTodo({ id, task: value, done })} colorScheme="green" size="xs">
+        Save
+      </Button>
     </li>
   );
 };
