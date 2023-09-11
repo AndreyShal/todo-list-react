@@ -1,12 +1,12 @@
-import Task from "../Task";
+import TodoItem from "../TodoItem";
 import "./index.scss";
 import React, { FC, useEffect, useState } from "react";
-import { Post } from "../Task";
+import { Post } from "../TodoItem";
 import { useGetTodosQuery } from "../../store/api/api";
 
 type PostArray = Post[];
 
-const Tasks = () => {
+const TodoList = () => {
   const { data, isLoading, error } = useGetTodosQuery("");
   useEffect(() => {
     console.log(data);
@@ -21,7 +21,7 @@ const Tasks = () => {
       ) : data ? (
         <ul className="tasks__list">
           {data?.map((el: Post) => (
-            <Task key={el.id} task={el.task} done={el.done} id={el.id} />
+            <TodoItem key={el.id} task={el.task} done={el.done} id={el.id} />
           ))}
         </ul>
       ) : null}
@@ -29,4 +29,4 @@ const Tasks = () => {
   );
 };
 
-export default Tasks;
+export default TodoList;

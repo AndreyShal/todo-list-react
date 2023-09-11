@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Text } from "@chakra-ui/react";
 import "./styles/index.scss";
-import Tasks from "./components/Tascs";
+import TodoList from "./components/TodoList";
 import Header from "./components/Header";
 import CreateTask from "./components/CreateTask";
 import { ChakraBaseProvider, extendBaseTheme } from "@chakra-ui/react";
@@ -23,7 +23,7 @@ function App() {
         <div className="app__container">
           <Header />
           <CreateTask />
-          <Tasks />
+          <TodoList />
         </div>
       </Box>
     </ChakraBaseProvider>

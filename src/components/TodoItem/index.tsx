@@ -10,7 +10,7 @@ export interface Post {
   done: boolean;
 }
 
-const Task: React.FC<Post> = ({ id, task, done }) => {
+const TodoItem: React.FC<Post> = ({ id, task, done }) => {
   const [value, setValue] = useState(task);
   const [updateTodo, { isLoading: isUpdating }] = useUpdateTodoMutation();
   const [deleteTodo, { isLoading: isDeleting }] = useDeleteTodoMutation();
@@ -31,4 +31,4 @@ const Task: React.FC<Post> = ({ id, task, done }) => {
   );
 };
 
-export default Task;
+export default TodoItem;
